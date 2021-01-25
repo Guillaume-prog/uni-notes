@@ -86,7 +86,7 @@ def sort_data(m_marks):
 
     total_string = "Moyenne globale: {}\n\n{}".format(get_average(ue_averages), total_string)
 
-    return total_string
+    return total_string.strip()
 
 
 def get_average(m_list):
@@ -112,7 +112,7 @@ Pour utiliser ce logiciel, entrez vos identifiants de l'université
 """)
 
     username = input("numéro étudiant: ")
-    password = input("mot de passe: ")
+    password = getpass.getpass("mot de passe: ")
 
     browser = get_browser()
 
@@ -128,5 +128,6 @@ Pour utiliser ce logiciel, entrez vos identifiants de l'université
     data = sort_data(marks)
 
     print(data)
+    print("\nmoyenne enregistrée dans 'notes.txt'")
     with open('notes.txt', 'w') as f:
         f.write(data)
