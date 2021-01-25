@@ -1,4 +1,3 @@
-import json
 import time
 import getpass
 
@@ -6,12 +5,14 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
 
 
-#Constants
+# Constants
 
 SITE_URL = 'https://notes.iut-nantes.univ-nantes.fr/'
 DRIVER_PATH = "/usr/bin/chromedriver"
 
+
 # Functions
+
 
 def get_browser():
     options = Options()
