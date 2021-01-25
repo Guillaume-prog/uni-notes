@@ -1,5 +1,7 @@
 import time
 import getpass
+import os
+import sys
 
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.options import Options
@@ -8,17 +10,25 @@ from selenium.webdriver.chrome.options import Options
 # Constants
 
 SITE_URL = 'https://notes.iut-nantes.univ-nantes.fr/'
-DRIVER_PATH = "/usr/bin/chromedriver"
+DRIVER_PATH = "./driver/chromedriver.exe"
 
 
 # Functions
+
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.dirname(__file__)
+    return os.path.join(base_path, relative_path)
 
 
 def get_browser():
     options = Options()
     options.add_argument("--headless")
 
-    return Chrome(DRIVER_PATH, options=options)
+    return Chrome(resource_path(DRIVER_PATH), options=options)
 
 
 def connect(b, user, pw):
